@@ -47,7 +47,7 @@ class newNuScenes(openpifpaf.datasets.DataModule):
 
     def __init__(self):
         super().__init__()
-        cifdet = openpifpaf.headmeta.CifDet('cifdet', 'nuscenes', NUSCENES_CATEGORIES)
+        cifdet = openpifpaf.headmeta.CifDet('cifdet', 'newnuscenes', NUSCENES_CATEGORIES)
         cifdet.upsample_stride = self.upsample_stride
         self.head_metas = [cifdet]
 
@@ -55,38 +55,38 @@ class newNuScenes(openpifpaf.datasets.DataModule):
     def cli(cls, parser: argparse.ArgumentParser):
         group = parser.add_argument_group('data module NuScenes')
 
-        group.add_argument('--nuscenes-train-annotations',
+        group.add_argument('--newnuscenes-train-annotations',
                            default=cls.train_annotations)
-        group.add_argument('--nuscenes-val-annotations',
+        group.add_argument('--newnuscenes-val-annotations',
                            default=cls.val_annotations)
-        group.add_argument('--nuscenes-train-image-dir',
+        group.add_argument('--newnuscenes-train-image-dir',
                            default=cls.train_image_dir)
-        group.add_argument('--nuscenes-val-image-dir',
+        group.add_argument('--newnuscenes-val-image-dir',
                            default=cls.val_image_dir)
 
-        group.add_argument('--nuscenes-square-edge',
+        group.add_argument('--newnuscenes-square-edge',
                            default=cls.square_edge, type=int,
                            help='square edge of input images')
         assert not cls.extended_scale
-        group.add_argument('--nuscenes-extended-scale',
+        group.add_argument('--newnuscenes-extended-scale',
                            default=False, action='store_true',
                            help='augment with an extended scale range')
-        group.add_argument('--nuscenes-orientation-invariant',
+        group.add_argument('--newnuscenes-orientation-invariant',
                            default=cls.orientation_invariant, type=float,
                            help='augment with random orientations')
-        group.add_argument('--nuscenes-blur',
+        group.add_argument('--newnuscenes-blur',
                            default=cls.blur, type=float,
                            help='augment with blur')
         assert cls.augmentation
-        group.add_argument('--nuscenes-no-augmentation',
+        group.add_argument('--newnuscenes-no-augmentation',
                            dest='nuscenes_augmentation',
                            default=True, action='store_false',
                            help='do not apply data augmentation')
-        group.add_argument('--nuscenes-rescale-images',
+        group.add_argument('--newnuscenes-rescale-images',
                            default=cls.rescale_images, type=float,
                            help='overall rescale factor for images')
 
-        group.add_argument('--nuscenes-upsample',
+        group.add_argument('--newnuscenes-upsample',
                            default=cls.upsample_stride, type=int,
                            help='head upsample stride')
 
@@ -97,18 +97,18 @@ class newNuScenes(openpifpaf.datasets.DataModule):
         cls.pin_memory = args.pin_memory
 
         # nuscenes specific
-        cls.train_annotations = args.nuscenes_train_annotations
-        cls.val_annotations = args.nuscenes_val_annotations
-        cls.train_image_dir = args.nuscenes_train_image_dir
-        cls.val_image_dir = args.nuscenes_val_image_dir
+        cls.train_annotations = args.newnuscenes_train_annotations
+        cls.val_annotations = args.newnuscenes_val_annotations
+        cls.train_image_dir = args.newnuscenes_train_image_dir
+        cls.val_image_dir = args.newnuscenes_val_image_dir
 
-        cls.square_edge = args.nuscenes_square_edge
-        cls.extended_scale = args.nuscenes_extended_scale
-        cls.orientation_invariant = args.nuscenes_orientation_invariant
-        cls.blur = args.nuscenes_blur
-        cls.augmentation = args.nuscenes_augmentation
-        cls.rescale_images = args.nuscenes_rescale_images
-        cls.upsample_stride = args.nuscenes_upsample
+        cls.square_edge = args.newnuscenes_square_edge
+        cls.extended_scale = args.newnuscenes_extended_scale
+        cls.orientation_invariant = args.newnuscenes_orientation_invariant
+        cls.blur = args.newnuscenes_blur
+        cls.augmentation = args.newnuscenes_augmentation
+        cls.rescale_images = args.newnuscenes_rescale_images
+        cls.upsample_stride = args.newnuscenes_upsample
 
     def _preprocess(self):
         enc = openpifpaf.encoder.CifDet(self.head_metas[0])
