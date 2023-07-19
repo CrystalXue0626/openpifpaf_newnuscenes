@@ -79,7 +79,7 @@ class newNuScenes(openpifpaf.datasets.DataModule):
                            help='augment with blur')
         assert cls.augmentation
         group.add_argument('--newnuscenes-no-augmentation',
-                           dest='nuscenes_augmentation',
+                           dest='newnuscenes_augmentation',
                            default=True, action='store_false',
                            help='do not apply data augmentation')
         group.add_argument('--newnuscenes-rescale-images',
