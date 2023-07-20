@@ -28,10 +28,10 @@ class newNuScenes(openpifpaf.datasets.DataModule):
     debug = False
     pin_memory = False
 
-    train_annotations = '/content/mmdetection3d/data/NuScenes/mscoco_style_annotations/nuimages_v1.0-train.json'
-    val_annotations = '/content/mmdetection3d/data/NuScenes/mscoco_style_annotations/nuimages_v1.0-val.json'
-    eval_annotations = '/content/mmdetection3d/data/NuScenes/mscoco_style_annotations/nuimages_v1.0-test.json'
-    train_image_dir = '/content/mmdetection3d/data/NuScenes'
+    train_annotations = '/content/mmdetection3d/data/nuimages/annotations/nuimages_v1.0-mini.json'
+    val_annotations = '/content/mmdetection3d/data/nuimages/annotations/nuimages_v1.0-mini.json'
+    eval_annotations = val_annotations
+    train_image_dir = '/content/mmdetection3d/data/nuimages/samples'
     val_image_dir = train_image_dir    # All images in the the same dir --> annotations
     eval_image_dir = train_image_dir   # are in such a way that the correct file is chosen
 
