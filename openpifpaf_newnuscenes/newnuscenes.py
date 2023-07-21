@@ -15,9 +15,9 @@ try:
 except ImportError:
     pass
 
-NUSCENES_CATEGORIES = ('truck', 'trailer', 'bus', 'construction_vehicle',
-                       'bicycle', 'motorcycle', 'pedestrian', 'traffic_cone',
-                       'barrier', 'car')
+NUSCENES_CATEGORIES = ('car', 'truck', 'trailer', 'bus', 'construction_vehicle',
+                  'bicycle', 'motorcycle', 'pedestrian', 'traffic_cone',
+                  'barrier')
 
 
 class newNuScenes(openpifpaf.datasets.DataModule):
